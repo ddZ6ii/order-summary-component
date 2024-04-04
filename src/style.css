@@ -65,17 +65,27 @@
 ############# STYLE GUIDE #################
 ######################################## */
 :root {
-  --color-primayr: #e0e8ff;
+  --accent: 245 75% 52%;
+  --color-primary: #e0e8ff;
   --color-accent: #3829e0;
+  --color-complementary: #907600;
+  --color-neutral-50: #ffffff;
   --color-neutral-200: #f5f7ff;
-  --color-neutral-400: #7280a7;
+  --color-neutral-400: #606c8e;
   --color-neutral-600: #1f2f56;
 
   --font-body: 1rem;
+  --font-heading: 1.75rem;
 
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --font-weight-black: 900;
+
+  --border-radius: 12px;
+
+  --spacing: 2rem;
+
+  --transition-duration-timing: 150ms ease;
 }
 
 /* ########################################
@@ -122,12 +132,19 @@ ul {
 ############# BASIC STYLING ###############
 ######################################## */
 body {
+  color: var(--color-neutral-400);
   font-family: 'Red Hat Display', sans-serif;
   font-size: var(--font-body);
   font-weight: var(--font-weight-medium);
   @supports (font-variation-settings: normal) {
     font-family: 'Red Hat Display VF', sans-serif;
   }
+}
+
+h1 {
+  color: var(--color-neutral-600);
+  font-size: var(--font-heading);
+  font-weight: var(--font-weight-black);
 }
 
 /* ########################################
@@ -151,3 +168,147 @@ body {
 /* ########################################
 ########### COMPONENT STYLING #############
 ######################################## */
+.wrapper {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  background:
+    url('/assets/images/pattern-background-desktop.svg') no-repeat top/contain,
+    var(--color-primary);
+}
+
+.card {
+  margin-inline: auto;
+  width: min(90%, 28em);
+
+  background-color: var(--color-neutral-50);
+  border-radius: calc(2 * var(--border-radius));
+  box-shadow: 0 25px 50px -12px hsl(var(--accent) / 0.2);
+  box-shadow:
+    0 20px 25px -5px hsl(var(--accent) / 0.15),
+    0 8px 10px -6px hsl(var(--accent) / 0.1);
+  overflow: hidden;
+
+  & .card-container {
+    margin-inline: auto;
+    padding-block: var(--spacing);
+    width: min(80%);
+    display: grid;
+    row-gap: calc(1.25 * var(--spacing));
+    text-align: center;
+  }
+
+  & .card-hero {
+    height: auto;
+  }
+
+  & .card-content p {
+    margin-top: calc(0.5 * var(--spacing));
+  }
+
+  & .card-plan,
+  & .card-plan-info,
+  & .card-plan-left {
+    display: flex;
+    align-items: center;
+  }
+
+  & .card-plan,
+  & .card-plan-left {
+    flex-wrap: wrap;
+    gap: calc(0.5 * var(--spacing));
+  }
+
+  & .card-plan {
+    padding: calc(0.5 * var(--spacing));
+    justify-content: space-between;
+    background-color: var(--color-neutral-200);
+    border-radius: var(--border-radius);
+  }
+
+  & .card-plan-info {
+    flex-direction: column;
+    & h2 {
+      color: var(--color-neutral-600);
+      font-weight: var(--font-weight-black);
+    }
+  }
+
+  & .ctas {
+    display: grid;
+    gap: var(--spacing);
+  }
+}
+
+.cta {
+  font-weight: var(--font-weight-bold);
+  border: 4px solid transparent;
+  transition: var(--transition-duration-timing);
+
+  &:focus-visible {
+    outline-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  &.card-plan-cta {
+    color: var(--color-accent);
+    &:hover {
+      opacity: 0.75;
+      text-decoration: none;
+    }
+  }
+
+  &.cta--primary {
+    padding: calc(0.5 * var(--spacing));
+    background-color: var(--color-accent);
+    border-radius: var(--border-radius);
+    box-shadow:
+      0 20px 25px -5px hsl(var(--accent) / 0.25),
+      0 8px 10px -6px hsl(var(--accent) / 0.25);
+    color: var(--color-neutral-50);
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &.cta--secondary {
+    margin-inline: auto;
+    width: fit-content;
+    &:hover {
+      color: var(--color-neutral-600);
+    }
+  }
+}
+
+.footer {
+  padding: calc(0.5 * var(--spacing));
+  color: var(--color-neutral-600);
+  text-align: center;
+
+  & .footer-icon {
+    color: var(--color-accent);
+  }
+
+  & .footer-link {
+    transition: var(--transition-duration-timing);
+
+    &,
+    &:link {
+      text-underline-offset: 4px;
+    }
+    &:visited {
+      color: var(--color-neutral-400);
+    }
+    &:is(:hover, :focus-visible) {
+      color: var(--color-accent);
+    }
+    &:focus-visible {
+      outline-color: var(--color-accent);
+      text-decoration: none;
+    }
+    &:active {
+      color: var(--color-complementary);
+    }
+  }
+}
