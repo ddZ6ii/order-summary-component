@@ -17,12 +17,51 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Frontend Mentor | Order summary card</title>
   </head>
-  <body>
+  <body class="wrapper">
     <main>
-      <h1>Hello World!</h1>
-      <!-- Order Summary You can now listen to millions of songs, audiobooks, and
-      podcasts on any device anywhere you like! Annual Plan $59.99/year Change
-      Proceed to Payment Cancel Order -->
+      <div class="card">
+        <img
+          src="/assets/images/illustration-hero.svg"
+          alt=""
+          width="450"
+          height="220"
+          class="card-hero"
+        />
+        <div class="card-container">
+          <section class="card-content">
+            <h1>Order Summary</h1>
+            <p>
+              You can now listen to millions of songs, audiobooks, and podcasts
+              on any device anywhere you like!
+            </p>
+          </section>
+          <section class="card-plan">
+            <div class="card-plan-left">
+              <img
+                src="assets/images/icon-music.svg"
+                alt=""
+                width="48"
+                height="48"
+              />
+              <div class="card-plan-info">
+                <h2>Annual Plan</h2>
+                <p>$59.99/year</p>
+              </div>
+            </div>
+            <a href="" class="cta card-plan-cta" aria-label="Change plan"
+              >Change</a
+            >
+          </section>
+          <div class="ctas">
+            <button type="button" class="cta cta--primary">
+              Proceed to Payment
+            </button>
+            <button type="button" class="cta cta--secondary">
+              Cancel Order
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <p>
