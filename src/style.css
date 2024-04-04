@@ -1,10 +1,82 @@
 /* ########################################
 ############# CUSTOM FONTS ################
 ######################################## */
+/* Provide variable fonts as main format. */
+@font-face {
+  font-family: 'Red Hat Display VF';
+  src:
+    local('Red Hat Display '),
+    url('/assets/fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.woff2')
+      format('woff2-variations'),
+    url('/assets/fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.woff')
+      format('woff-variations'),
+    url('/assets/fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf')
+      format('truetype-variations');
+  font-style: normal;
+  font-weight: 500 900;
+  font-display: swap;
+}
+
+/* Provide static fonts as a fallback. */
+@font-face {
+  font-family: 'Red Hat Display';
+  src:
+    local('Red Hat Display '),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Medium.woff2')
+      format('woff2'),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Medium.woff')
+      format('woff'),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Medium.ttf')
+      format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Red Hat Display';
+  src:
+    local('Red Hat Display '),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Bold.woff2')
+      format('woff2'),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Bold.woff')
+      format('woff'),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Bold.ttf')
+      format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Red Hat Display';
+  src:
+    local('Red Hat Display '),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Black.woff2')
+      format('woff2'),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Black.woff')
+      format('woff'),
+    url('/assets/fonts/Red_Hat_Display/static/RedHatDisplay-Black.ttf')
+      format('truetype');
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
 
 /* ########################################
 ############# STYLE GUIDE #################
 ######################################## */
+:root {
+  --color-primayr: #e0e8ff;
+  --color-accent: #3829e0;
+  --color-neutral-200: #f5f7ff;
+  --color-neutral-400: #7280a7;
+  --color-neutral-600: #1f2f56;
+
+  --font-body: 1rem;
+
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+}
 
 /* ########################################
 ############# RESET #######################
@@ -49,6 +121,14 @@ ul {
 /* ########################################
 ############# BASIC STYLING ###############
 ######################################## */
+body {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  @supports (font-variation-settings: normal) {
+    font-family: 'Red Hat Display VF', sans-serif;
+  }
+}
 
 /* ########################################
 ############# UTILITIES ###################
